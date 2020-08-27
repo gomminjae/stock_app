@@ -20,6 +20,15 @@
 		21D3D4F224F7B654005E7A85 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4F124F7B654005E7A85 /* HomeViewController.swift */; };
 		21D3D4F424F7B68A005E7A85 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4F324F7B68A005E7A85 /* RealmManager.swift */; };
 		21D3D4F624F7B696005E7A85 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4F524F7B696005E7A85 /* APIManager.swift */; };
+		21D3D4F924F7BAF2005E7A85 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4F824F7BAF2005E7A85 /* EmptyView.swift */; };
+		21D3D4FB24F7BB0E005E7A85 /* reusableIdentifier+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4FA24F7BB0E005E7A85 /* reusableIdentifier+extension.swift */; };
+		21D3D4FD24F7BB2F005E7A85 /* TypeConvert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4FC24F7BB2F005E7A85 /* TypeConvert.swift */; };
+		21D3D4FF24F7BB45005E7A85 /* TextField+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4FE24F7BB45005E7A85 /* TextField+extension.swift */; };
+		21D3D50124F7BB6B005E7A85 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D50024F7BB6B005E7A85 /* UIView+extension.swift */; };
+		21D3D50324F7BC53005E7A85 /* AddTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D50224F7BC53005E7A85 /* AddTabbarViewController.swift */; };
+		21D3D50524F7BCF1005E7A85 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D50424F7BCF1005E7A85 /* SearchViewController.swift */; };
+		21D3D50824F7BF98005E7A85 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D50624F7BF98005E7A85 /* NewsCell.swift */; };
+		21D3D50924F7BF98005E7A85 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21D3D50724F7BF98005E7A85 /* NewsCell.xib */; };
 		270E030557C2CE0B0F8FF7E8 /* Pods_stock_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDD1AF5929D818825B650FA /* Pods_stock_appTests.framework */; };
 		AD5A12A2727FB2F395859D80 /* Pods_stock_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE25D11A57DDABC42D6FA58 /* Pods_stock_app.framework */; };
 		E83683589C15648D806C860C /* Pods_stock_app_stock_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B20CB829A48284FAD76BEB9 /* Pods_stock_app_stock_appUITests.framework */; };
@@ -64,6 +73,15 @@
 		21D3D4F124F7B654005E7A85 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		21D3D4F324F7B68A005E7A85 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		21D3D4F524F7B696005E7A85 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		21D3D4F824F7BAF2005E7A85 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		21D3D4FA24F7BB0E005E7A85 /* reusableIdentifier+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "reusableIdentifier+extension.swift"; sourceTree = "<group>"; };
+		21D3D4FC24F7BB2F005E7A85 /* TypeConvert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeConvert.swift; sourceTree = "<group>"; };
+		21D3D4FE24F7BB45005E7A85 /* TextField+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+extension.swift"; sourceTree = "<group>"; };
+		21D3D50024F7BB6B005E7A85 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		21D3D50224F7BC53005E7A85 /* AddTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTabbarViewController.swift; sourceTree = "<group>"; };
+		21D3D50424F7BCF1005E7A85 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		21D3D50624F7BF98005E7A85 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		21D3D50724F7BF98005E7A85 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		4B20CB829A48284FAD76BEB9 /* Pods_stock_app_stock_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stock_app_stock_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		636AA8CB4F18A1E2E39A9094 /* Pods-stock_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stock_app.debug.xcconfig"; path = "Target Support Files/Pods-stock_app/Pods-stock_app.debug.xcconfig"; sourceTree = "<group>"; };
 		6DE25D11A57DDABC42D6FA58 /* Pods_stock_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stock_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +144,7 @@
 		21D3D4B224F7B4E8005E7A85 /* stock_app */ = {
 			isa = PBXGroup;
 			children = (
+				21D3D4F724F7BADD005E7A85 /* Extension */,
 				21D3D4E924F7B60E005E7A85 /* Interface */,
 				21D3D4E724F7B5FF005E7A85 /* Manager */,
 				21D3D4E624F7B5D9005E7A85 /* Resource */,
@@ -133,6 +152,7 @@
 				21D3D4E424F7B5CC005E7A85 /* View */,
 				21D3D4E324F7B5C8005E7A85 /* Model */,
 				21D3D4BE24F7B4EA005E7A85 /* LaunchScreen.storyboard */,
+				21D3D4C124F7B4EA005E7A85 /* Info.plist */,
 			);
 			path = stock_app;
 			sourceTree = "<group>";
@@ -168,6 +188,8 @@
 		21D3D4E424F7B5CC005E7A85 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				21D3D50624F7BF98005E7A85 /* NewsCell.swift */,
+				21D3D50724F7BF98005E7A85 /* NewsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				21D3D4F124F7B654005E7A85 /* HomeViewController.swift */,
+				21D3D50224F7BC53005E7A85 /* AddTabbarViewController.swift */,
+				21D3D50424F7BCF1005E7A85 /* SearchViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -186,7 +210,6 @@
 				21D3D4B324F7B4E8005E7A85 /* AppDelegate.swift */,
 				21D3D4B524F7B4E8005E7A85 /* SceneDelegate.swift */,
 				21D3D4BC24F7B4EA005E7A85 /* Assets.xcassets */,
-				21D3D4C124F7B4EA005E7A85 /* Info.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -206,6 +229,18 @@
 				21D3D4B924F7B4E8005E7A85 /* Main.storyboard */,
 			);
 			path = Interface;
+			sourceTree = "<group>";
+		};
+		21D3D4F724F7BADD005E7A85 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				21D3D4F824F7BAF2005E7A85 /* EmptyView.swift */,
+				21D3D4FA24F7BB0E005E7A85 /* reusableIdentifier+extension.swift */,
+				21D3D4FC24F7BB2F005E7A85 /* TypeConvert.swift */,
+				21D3D4FE24F7BB45005E7A85 /* TextField+extension.swift */,
+				21D3D50024F7BB6B005E7A85 /* UIView+extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		866DA3BED86E53D3858E55D2 /* Pods */ = {
@@ -342,6 +377,7 @@
 			files = (
 				21D3D4C024F7B4EA005E7A85 /* LaunchScreen.storyboard in Resources */,
 				21D3D4BD24F7B4EA005E7A85 /* Assets.xcassets in Resources */,
+				21D3D50924F7BF98005E7A85 /* NewsCell.xib in Resources */,
 				21D3D4BB24F7B4E8005E7A85 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,8 +506,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D3D50524F7BCF1005E7A85 /* SearchViewController.swift in Sources */,
 				21D3D4F624F7B696005E7A85 /* APIManager.swift in Sources */,
+				21D3D4FD24F7BB2F005E7A85 /* TypeConvert.swift in Sources */,
+				21D3D4F924F7BAF2005E7A85 /* EmptyView.swift in Sources */,
 				21D3D4B424F7B4E8005E7A85 /* AppDelegate.swift in Sources */,
+				21D3D50124F7BB6B005E7A85 /* UIView+extension.swift in Sources */,
+				21D3D50824F7BF98005E7A85 /* NewsCell.swift in Sources */,
+				21D3D4FB24F7BB0E005E7A85 /* reusableIdentifier+extension.swift in Sources */,
+				21D3D50324F7BC53005E7A85 /* AddTabbarViewController.swift in Sources */,
+				21D3D4FF24F7BB45005E7A85 /* TextField+extension.swift in Sources */,
 				21D3D4EF24F7B63B005E7A85 /* Category.swift in Sources */,
 				21D3D4B624F7B4E8005E7A85 /* SceneDelegate.swift in Sources */,
 				21D3D4ED24F7B62E005E7A85 /* News.swift in Sources */,

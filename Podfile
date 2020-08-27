@@ -6,7 +6,7 @@ target 'stock_app' do
   use_frameworks!
   pod 'RealmSwift'
   pod 'SnapKit'
-
+  pod 'STTabbar'
   # Pods for stock_app
 
   target 'stock_appTests' do

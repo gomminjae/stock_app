@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import RealmSwift
+ 
+
+@objcMembers class Stock: Object {
+    dynamic var stockName: String = ""
+    dynamic var buy: Int = 0
+    dynamic var sell: Int = 0
+    dynamic var amount: Int = 0
+    dynamic var rate: Double = 0.0
+    
+    dynamic var category = Category.tech.rawValue
+    
+    var setCategory: Category {
+        get { return Category(rawValue: category) ?? .tech}
+        set { category = newValue.rawValue }
+    }
+    
+}
