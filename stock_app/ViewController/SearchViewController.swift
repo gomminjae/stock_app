@@ -9,6 +9,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,6 +31,14 @@ class SearchViewController: UIViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        searchBar.text = ""
+        news = []
+    }
+    
+    
     
     
     private func setupTableViewCell() {
@@ -61,11 +71,11 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)")
+    }
+    
 }
-
-
-
-
 
 
 extension SearchViewController: UISearchBarDelegate {

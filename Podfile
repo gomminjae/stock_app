@@ -7,6 +7,7 @@ target 'stock_app' do
   pod 'RealmSwift'
   pod 'SnapKit'
   pod 'STTabbar'
+  pod 'TextFieldEffects'
   # Pods for stock_app
 
   target 'stock_appTests' do

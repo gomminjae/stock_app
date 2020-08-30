@@ -11,9 +11,8 @@ import RealmSwift
 
 class RealmManager {
     
-    
-    
     private init() {}
+    
     static let shared = RealmManager()
     
     var realm = try! Realm()
@@ -25,7 +24,7 @@ class RealmManager {
             }
             
         } catch {
-            print(error)
+            post(error)
         }
     }
     
@@ -38,7 +37,7 @@ class RealmManager {
             }
             
         } catch {
-            print(error)
+            post(error)
         }
     }
     
@@ -48,7 +47,7 @@ class RealmManager {
                 realm.delete(object)
             }
         } catch {
-            print(error)
+            post(error)
         }
     }
     
@@ -58,10 +57,13 @@ class RealmManager {
                 realm.deleteAll()
             }
         } catch {
-            print(error)
+            post(error)
         }
     }
     
+    func post(_ error: Error) {
+        NotificationCenter.default.post(name: NSNotification.Name("RealmError"), object: error)
+    }
     
     func observeRealmErrors(in vc: UIViewController, completion: @escaping (Error?) -> Void) {
         NotificationCenter.default.addObserver(forName: NSNotification.Name("RealmError"), object: nil, queue: nil) { (notification) in

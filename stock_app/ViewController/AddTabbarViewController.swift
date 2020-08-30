@@ -13,6 +13,14 @@ class AddTabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let myTabbar = tabBar as? STTabbar {
+            myTabbar.centerButtonActionHandler = {
+                guard let vc = self.storyboard?.instantiateViewController(identifier: "addPortfolio") else { return }
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
 
     }
     override var shouldAutorotate: Bool {
@@ -21,6 +29,8 @@ class AddTabbarViewController: UITabBarController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
            return .portrait
     }
+    
+
 
     
 

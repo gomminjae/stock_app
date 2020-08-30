@@ -6,11 +6,13 @@ PODS:
     - Realm (= 5.3.3)
   - SnapKit (5.0.1)
   - STTabbar (0.1.0)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - RealmSwift
   - SnapKit
   - STTabbar
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
@@ -18,13 +20,15 @@ SPEC REPOS:
     - RealmSwift
     - SnapKit
     - STTabbar
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Realm: 2d57ea355bf8ca2a0964d6bfb38d28d7ff2addf6
   RealmSwift: 0a709536ecea30eea1d3c514f6ade2ed078dee3c
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   STTabbar: fe93da755010233b348b2d0147c43bb1bef290fa
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: d88c07f980d591f5234fda8b76e2434100270b91
+PODFILE CHECKSUM: 7705c9ed803e5eeb493f3acd384983548ac00357
 
 COCOAPODS: 1.9.3
