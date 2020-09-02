@@ -7,11 +7,27 @@
 //
 
 import UIKit
+import WebKit
+
+
 
 class NewsLinkViewController: UIViewController {
+    
+    
 
+    @IBOutlet weak var webView: WKWebView!
+    
+    var detailURL: String = ""
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("-->\(detailURL)")
+        guard let url = URL(string: detailURL) else { return }
+        let request = URLRequest(url: url)
+        
+        webView.load(request)
 
         // Do any additional setup after loading the view.
     }

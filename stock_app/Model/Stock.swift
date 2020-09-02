@@ -11,6 +11,7 @@ import RealmSwift
  
 
 @objcMembers class Stock: Object {
+    
     dynamic var stockName: String = ""
     dynamic var buy: Int = 0
     dynamic var sell: Int = 0

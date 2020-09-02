@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210A63BF24FD5B290075A297 /* PortfolioListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210A63BE24FD5B290075A297 /* PortfolioListViewController.swift */; };
+		210A63C224FD62650075A297 /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210A63C024FD62650075A297 /* FolderCell.swift */; };
+		210A63C324FD62650075A297 /* FolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 210A63C124FD62650075A297 /* FolderCell.xib */; };
+		210A63C524FD813D0075A297 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210A63C424FD813D0075A297 /* PopUpViewController.swift */; };
+		21251E2024FD0353002E0217 /* StockInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21251E1F24FD0353002E0217 /* StockInfo.swift */; };
+		21251E2624FD405B002E0217 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21251E2524FD405B002E0217 /* HeaderView.swift */; };
+		21251E2824FD4066002E0217 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21251E2724FD4066002E0217 /* HeaderView.xib */; };
 		2132C5BD24FBB91500A208A1 /* AddPortfolioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2132C5BC24FBB91500A208A1 /* AddPortfolioViewController.swift */; };
+		2132C5C124FC0E2F00A208A1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2132C5C024FC0E2F00A208A1 /* String+extension.swift */; };
+		219F40F624FFA1FB009BF2B1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2132C5BE24FC010400A208A1 /* WebKit.framework */; };
 		21D3D4B424F7B4E8005E7A85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4B324F7B4E8005E7A85 /* AppDelegate.swift */; };
 		21D3D4B624F7B4E8005E7A85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D3D4B524F7B4E8005E7A85 /* SceneDelegate.swift */; };
 		21D3D4BB24F7B4E8005E7A85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D3D4B924F7B4E8005E7A85 /* Main.storyboard */; };
@@ -64,7 +73,16 @@
 /* Begin PBXFileReference section */
 		04BEF6B05AE0630D4E448CDA /* Pods-stock_appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stock_appTests.release.xcconfig"; path = "Target Support Files/Pods-stock_appTests/Pods-stock_appTests.release.xcconfig"; sourceTree = "<group>"; };
 		1FDD1AF5929D818825B650FA /* Pods_stock_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stock_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		210A63BE24FD5B290075A297 /* PortfolioListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioListViewController.swift; sourceTree = "<group>"; };
+		210A63C024FD62650075A297 /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
+		210A63C124FD62650075A297 /* FolderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FolderCell.xib; sourceTree = "<group>"; };
+		210A63C424FD813D0075A297 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		21251E1F24FD0353002E0217 /* StockInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockInfo.swift; sourceTree = "<group>"; };
+		21251E2524FD405B002E0217 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		21251E2724FD4066002E0217 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		2132C5BC24FBB91500A208A1 /* AddPortfolioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPortfolioViewController.swift; sourceTree = "<group>"; };
+		2132C5BE24FC010400A208A1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		2132C5C024FC0E2F00A208A1 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		21D3D4B024F7B4E8005E7A85 /* stock_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stock_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D3D4B324F7B4E8005E7A85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D3D4B524F7B4E8005E7A85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219F40F624FFA1FB009BF2B1 /* WebKit.framework in Frameworks */,
 				AD5A12A2727FB2F395859D80 /* Pods_stock_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +220,7 @@
 				21D3D4EA24F7B627005E7A85 /* Stock.swift */,
 				21D3D4EC24F7B62E005E7A85 /* News.swift */,
 				21D3D4EE24F7B63B005E7A85 /* Category.swift */,
+				21251E1F24FD0353002E0217 /* StockInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +236,10 @@
 				21D3D51B24F7D7B1005E7A85 /* IssueCell.xib */,
 				21D72C7624F9414D007EAFFF /* StockCell.swift */,
 				21D72C7724F9414D007EAFFF /* StockCell.xib */,
+				21251E2524FD405B002E0217 /* HeaderView.swift */,
+				21251E2724FD4066002E0217 /* HeaderView.xib */,
+				210A63C024FD62650075A297 /* FolderCell.swift */,
+				210A63C124FD62650075A297 /* FolderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,11 +249,13 @@
 			children = (
 				21D3D4F124F7B654005E7A85 /* HomeViewController.swift */,
 				21D3D50224F7BC53005E7A85 /* AddTabbarViewController.swift */,
-				21D3D50424F7BCF1005E7A85 /* SearchViewController.swift */,
 				21D3D51E24F7FAAB005E7A85 /* PortfolioViewController.swift */,
 				21D72C7224F934DB007EAFFF /* DetailViewController.swift */,
+				21D3D50424F7BCF1005E7A85 /* SearchViewController.swift */,
 				21D72C7424F9353A007EAFFF /* NewsLinkViewController.swift */,
 				2132C5BC24FBB91500A208A1 /* AddPortfolioViewController.swift */,
+				210A63BE24FD5B290075A297 /* PortfolioListViewController.swift */,
+				210A63C424FD813D0075A297 /* PopUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -269,6 +295,7 @@
 				21D3D4FC24F7BB2F005E7A85 /* TypeConvert.swift */,
 				21D3D4FE24F7BB45005E7A85 /* TextField+extension.swift */,
 				21D3D50024F7BB6B005E7A85 /* UIView+extension.swift */,
+				2132C5C024FC0E2F00A208A1 /* String+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -289,6 +316,7 @@
 		F99C874C3C984178057A80F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2132C5BE24FC010400A208A1 /* WebKit.framework */,
 				6DE25D11A57DDABC42D6FA58 /* Pods_stock_app.framework */,
 				4B20CB829A48284FAD76BEB9 /* Pods_stock_app_stock_appUITests.framework */,
 				1FDD1AF5929D818825B650FA /* Pods_stock_appTests.framework */,
@@ -406,8 +434,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				21D3D51924F7D79A005E7A85 /* CategoryCell.xib in Resources */,
+				210A63C324FD62650075A297 /* FolderCell.xib in Resources */,
 				21D72C7924F9414D007EAFFF /* StockCell.xib in Resources */,
 				21D3D4C024F7B4EA005E7A85 /* LaunchScreen.storyboard in Resources */,
+				21251E2824FD4066002E0217 /* HeaderView.xib in Resources */,
 				21D3D4BD24F7B4EA005E7A85 /* Assets.xcassets in Resources */,
 				21D3D50924F7BF98005E7A85 /* NewsCell.xib in Resources */,
 				21D3D4BB24F7B4E8005E7A85 /* Main.storyboard in Resources */,
@@ -540,17 +570,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				21D3D51824F7D79A005E7A85 /* CategoryCell.swift in Sources */,
+				21251E2024FD0353002E0217 /* StockInfo.swift in Sources */,
 				21D3D50524F7BCF1005E7A85 /* SearchViewController.swift in Sources */,
 				21D3D4F624F7B696005E7A85 /* APIManager.swift in Sources */,
 				21D3D4FD24F7BB2F005E7A85 /* TypeConvert.swift in Sources */,
 				21D72C7824F9414D007EAFFF /* StockCell.swift in Sources */,
 				21D3D4F924F7BAF2005E7A85 /* EmptyView.swift in Sources */,
+				210A63BF24FD5B290075A297 /* PortfolioListViewController.swift in Sources */,
 				21D72C7324F934DB007EAFFF /* DetailViewController.swift in Sources */,
 				21D3D51C24F7D7B1005E7A85 /* IssueCell.swift in Sources */,
+				2132C5C124FC0E2F00A208A1 /* String+extension.swift in Sources */,
 				21D3D4B424F7B4E8005E7A85 /* AppDelegate.swift in Sources */,
+				210A63C524FD813D0075A297 /* PopUpViewController.swift in Sources */,
 				21D3D50124F7BB6B005E7A85 /* UIView+extension.swift in Sources */,
 				21D3D50824F7BF98005E7A85 /* NewsCell.swift in Sources */,
 				21D3D4FB24F7BB0E005E7A85 /* reusableIdentifier+extension.swift in Sources */,
+				210A63C224FD62650075A297 /* FolderCell.swift in Sources */,
 				21D3D50324F7BC53005E7A85 /* AddTabbarViewController.swift in Sources */,
 				21D3D51F24F7FAAB005E7A85 /* PortfolioViewController.swift in Sources */,
 				21D3D4FF24F7BB45005E7A85 /* TextField+extension.swift in Sources */,
@@ -562,6 +597,7 @@
 				21D72C7524F9353A007EAFFF /* NewsLinkViewController.swift in Sources */,
 				21D3D4F424F7B68A005E7A85 /* RealmManager.swift in Sources */,
 				21D3D4F224F7B654005E7A85 /* HomeViewController.swift in Sources */,
+				21251E2624FD405B002E0217 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +703,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -721,6 +758,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

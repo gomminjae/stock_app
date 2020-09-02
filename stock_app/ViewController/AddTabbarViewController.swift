@@ -15,13 +15,15 @@ class AddTabbarViewController: UITabBarController {
         super.viewDidLoad()
         
         if let myTabbar = tabBar as? STTabbar {
+            myTabbar.itemPositioning = .fill
+
+            
             myTabbar.centerButtonActionHandler = {
                 guard let vc = self.storyboard?.instantiateViewController(identifier: "addPortfolio") else { return }
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
             }
         }
-
     }
     override var shouldAutorotate: Bool {
            return false

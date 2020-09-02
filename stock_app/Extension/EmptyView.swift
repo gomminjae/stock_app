@@ -13,7 +13,7 @@ extension UITableView {
     func setEmptyView(title: String, message: String, image: UIImage) {
         let emptyView: UIView = {
             let view = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.width, height: self.bounds.height))
-            //view.backgroundColor = .blue
+            view.backgroundColor = .blue
             
             return view
         }()

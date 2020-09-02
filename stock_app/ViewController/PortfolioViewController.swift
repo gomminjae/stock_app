@@ -9,13 +9,6 @@
 import UIKit
 import RealmSwift
 
-
-protocol SendCategoryDelegate: class {
-    func sendCategory(category: Category)
-}
-
-
-
 class PortfolioViewController: UIViewController {
     @IBOutlet weak var categoryLabel: UILabel!
     
@@ -27,7 +20,7 @@ class PortfolioViewController: UIViewController {
     var realm = RealmManager.shared.realm
     var notificationToken: NotificationToken?
     
-    weak var delegate: SendCategoryDelegate?
+
     
 
     override func viewDidLoad() {
@@ -63,11 +56,17 @@ class PortfolioViewController: UIViewController {
     private func setupTableView() {
         let nibName = UINib(nibName: StockCell.reusableIdentifier, bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: StockCell.reusableIdentifier)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
-    func SendStockData(data: Stock) {
-        
-        detailStock = data
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showStock" {
+            guard let vc = segue.destination as? DetailViewController else { return }
+            if let index = sender as? Int {
+                vc.stock = portfolios[index]
+            }
+        }
     }
     
     
@@ -85,16 +84,17 @@ extension PortfolioViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.reusableIdentifier, for: indexPath) as? StockCell else { return UITableViewCell() }
-        if portfolios.count == 0 {
+        if portfolios.filter({ $0.setCategory == self.category }).count == 0 {
             tableView.setEmptyView(title: "No data", message: "Please add ", image: .checkmark)
             return cell
         }else {
-        
-        let data = portfolios.filter { $0.setCategory == self.category }[indexPath.row]
-        
-        cell.titleLabel.text = data.stockName
-        
-        return cell
+            
+            let data = portfolios.filter { $0.setCategory == self.category }[indexPath.row]
+            
+            cell.titleLabel.text = data.stockName
+            cell.dateLabel.text = data.date.toString()
+            
+            return cell
         }
     }
 }
@@ -104,7 +104,7 @@ extension PortfolioViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        detailStock = portfolios[indexPath.row]
+        performSegue(withIdentifier: "showStock", sender: indexPath.row)
         
     }
     

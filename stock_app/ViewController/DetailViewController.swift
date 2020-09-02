@@ -9,19 +9,13 @@
 import UIKit
 
 
-protocol DetailStockDelegate: class {
-    func SendStockData(data: Stock)
-}
+
 
 
 class DetailViewController: UIViewController {
     
     
     var stock: Stock?
-    weak var delegate: DetailStockDelegate?
-    
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

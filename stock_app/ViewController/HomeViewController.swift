@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class HomeViewController: UIViewController, SendCategoryDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, SendCategoryDelegate {
     var news = [News]()
     var setCategory: Category?
     
+    var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
     
     
     
@@ -37,6 +38,7 @@ class HomeViewController: UIViewController, SendCategoryDelegate {
         setNavigationBar()
         setupTableView()
         setupCollectionView()
+        setupCollectionViewLayout()
         
         
         //load data
@@ -56,15 +58,24 @@ class HomeViewController: UIViewController, SendCategoryDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showPortfolio" {
         guard let vc = segue.destination as? PortfolioViewController else { return }
-        guard let cell = sender as? UICollectionViewCell else { return }
-        let indexPath = collectionView.indexPath(for: cell)
-        vc.category = .tech
+            if let index = sender as? Int {
+                vc.category = Category(rawValue: category[index])
+            }
+        }
+        
+        else if segue.identifier == "newsDetail" {
+            guard let vc = segue.destination as? NewsLinkViewController else { return }
+            if let index = sender as? Int {
+                vc.detailURL = news[index].link
+            }
+
+        }
     }
     
-    
-    
-    func setupCollectionView() {
+    private func setupCollectionView() {
         let nibName = UINib(nibName: CategoryCell.reusableIdentifier, bundle: nil)
         collectionView.register(nibName, forCellWithReuseIdentifier: CategoryCell.reusableIdentifier)
         collectionView.dataSource = self
@@ -76,6 +87,8 @@ class HomeViewController: UIViewController, SendCategoryDelegate {
     private func setupTableView() {
         let nibName = UINib(nibName: IssueCell.reusableIdentifier, bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: IssueCell.reusableIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -86,9 +99,20 @@ class HomeViewController: UIViewController, SendCategoryDelegate {
         bar?.backgroundColor = .clear
     }
     
+    private func setupCollectionViewLayout() {
+        let spacing: CGFloat = 18
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        layout.scrollDirection = .horizontal
+        self.collectionView.collectionViewLayout = layout
+    }
     
-    func fetchNews() {
-        APIManager.getSearchResults("주식") { (news) in
+    
+    private func fetchNews() {
+        APIManager.getSearchResults("주식", display: 10) { (news) in
+            //비동기
             DispatchQueue.main.async {
                 self.news = news
                 self.tableView.reloadData()
@@ -96,9 +120,6 @@ class HomeViewController: UIViewController, SendCategoryDelegate {
         }
     }
     
-    func sendCategory(category: Category) {
-        setCategory = category
-    }
 }
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -108,6 +129,7 @@ extension HomeViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reusableIdentifier, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
         
         cell.categoryLabel.text = category[indexPath.item]
+        cell.itemsLabel.text = "\(portfolios.filter { $0.category == self.category[indexPath.item]}.count)"
         
         return cell
     }
@@ -116,13 +138,25 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showPortfolio", sender: self)
+        performSegue(withIdentifier: "showPortfolio", sender: indexPath.item)
     }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let spacing = 16
+        let totalSpacing = (2 * spacing) + (3 * spacing)
+        let cellSize = (Int((collectionView.bounds.width)) - totalSpacing ) / 2
+        
+        return CGSize(width: cellSize, height: cellSize)
+    }
+
 }
 
 
 
 extension HomeViewController: UITableViewDataSource {
+    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,8 +165,11 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: IssueCell.reusableIdentifier, for: indexPath) as? IssueCell else { return UITableViewCell() }
-        cell.titleLabel.text = news[indexPath.row].title
-        
+        cell.titleLabel.text = news[indexPath.row].title.withoutHtml
+        cell.selectionStyle = .none
+        cell.backgroundColor = .red
+        //cell.descriptionLabel.text = news[indexPath.row].content
+        //cell.animate()
         return cell
     }
     
@@ -140,6 +177,23 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("-->\(news[indexPath.row].title.withoutHtml)")
+        selectedIndex = indexPath
+        tableView.reloadRows(at: [selectedIndex], with: .none)
+        //performSegue(withIdentifier: "newsDetail", sender: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if selectedIndex == indexPath { return 150 }
+        
+        return 50
+    }
+    
+    
     
 }
 

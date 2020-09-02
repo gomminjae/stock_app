@@ -31,6 +31,7 @@ class AddPortfolioViewController: UIViewController {
         //view.backgroundColor = .white
         setDatePickerView()
         setupCategoryPickerView()
+        navigationController?.navigationBar.tintColor = .white
         
         
         // Do any additional setup after loading the view.

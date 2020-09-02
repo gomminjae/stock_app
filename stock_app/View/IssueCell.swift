@@ -11,6 +11,8 @@ import UIKit
 class IssueCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,4 +24,9 @@ class IssueCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func animate() {
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseIn, animations: { self.contentView.layoutIfNeeded() })
+    }
+    
 }
+

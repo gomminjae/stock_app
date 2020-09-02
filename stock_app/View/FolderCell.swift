@@ -1,16 +1,15 @@
 //
-//  CategoryCell.swift
+//  FolderCell.swift
 //  stock_app
 //
-//  Created by 권민재 on 2020/08/27.
+//  Created by 권민재 on 2020/09/01.
 //  Copyright © 2020 gommj_Dev. All rights reserved.
 //
 
 import UIKit
 
-class CategoryCell: UICollectionViewCell {
-    @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var itemsLabel: UILabel!
+class FolderCell: UICollectionViewCell {
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

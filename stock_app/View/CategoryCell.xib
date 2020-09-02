@@ -16,22 +16,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="69" height="67"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sot-UR-Q5A">
-                        <rect key="frame" x="13" y="3" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sot-UR-Q5A">
+                        <rect key="frame" x="0.0" y="3" width="69" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEz-Kh-Z22">
+                        <rect key="frame" x="20" y="42" width="27" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="LEz-Kh-Z22" firstAttribute="top" secondItem="Sot-UR-Q5A" secondAttribute="bottom" constant="22" id="Pe3-sb-ypD"/>
+                <constraint firstItem="Sot-UR-Q5A" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="brw-Fu-fYt"/>
+                <constraint firstItem="Sot-UR-Q5A" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="j2C-1c-ccg"/>
+                <constraint firstItem="LEz-Kh-Z22" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="ngC-Iv-Ruy"/>
+                <constraint firstAttribute="trailing" secondItem="Sot-UR-Q5A" secondAttribute="trailing" id="nzD-1e-Ot4"/>
+                <constraint firstAttribute="bottom" secondItem="LEz-Kh-Z22" secondAttribute="bottom" constant="13" id="uuh-yu-O7h"/>
+                <constraint firstAttribute="trailing" secondItem="LEz-Kh-Z22" secondAttribute="trailing" constant="22" id="xEd-dd-ONq"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="69" height="67"/>
             <connections>
                 <outlet property="categoryLabel" destination="Sot-UR-Q5A" id="og0-xR-Mp6"/>
+                <outlet property="itemsLabel" destination="LEz-Kh-Z22" id="PWi-Ni-ndR"/>
             </connections>
-            <point key="canvasLocation" x="145.6521739130435" y="88.058035714285708"/>
+            <point key="canvasLocation" x="31" y="10"/>
         </collectionViewCell>
     </objects>
 </document>

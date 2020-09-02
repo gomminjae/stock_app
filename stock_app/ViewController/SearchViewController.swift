@@ -9,6 +9,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+
     
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -16,11 +17,12 @@ class SearchViewController: UIViewController {
     
     
     var news = [News]()
-    
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         setupTableViewCell()
         searchBar.delegate = self
         tableView.reloadData()
@@ -38,12 +40,28 @@ class SearchViewController: UIViewController {
         news = []
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newsDetail" {
+            guard let vc = segue.destination as? NewsLinkViewController else { return }
+            if let index = sender as? Int {
+                
+                vc.detailURL = news[index].link
+            }
+        }
+    }
+    private func setNavigationBar() {
+        let bar = self.navigationController?.navigationBar
+        bar?.setBackgroundImage(UIImage(), for: .default)
+        bar?.shadowImage = UIImage()
+        bar?.backgroundColor = .clear
+    }
     
     
     private func setupTableViewCell() {
         let nibName = UINib(nibName: NewsCell.reusableIdentifier, bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: NewsCell.reusableIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -63,7 +81,8 @@ extension SearchViewController: UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.reusableIdentifier, for: indexPath) as? NewsCell else { return UITableViewCell() }
         
-        cell.titleLabel.text = news[indexPath.row].title
+        cell.titleLabel.text = news[indexPath.row].title.withoutHtml
+        cell.dateLabel.text = news[indexPath.row].pubDate
         
         return cell
     }
@@ -73,6 +92,7 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)")
+        performSegue(withIdentifier: "newsDetail", sender: indexPath.row)
     }
     
 }
@@ -91,7 +111,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         
         //Search Networking
-        APIManager.getSearchResults(searchQuery) { (news) in
+        APIManager.getSearchResults(searchQuery, display: 20) { (news) in
             print("--> \(news.count)")
             DispatchQueue.main.async {
                 self.news = news
