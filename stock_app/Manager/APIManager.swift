@@ -35,7 +35,7 @@ class APIManager {
             guard error == nil, let statusCode = (response as? HTTPURLResponse)?.statusCode,
                 successRange.contains(statusCode) else {
                     completion([])
-                    print("invalud range")
+                    print("invalid range")
                     return  }
             
             guard let resultData = data else {
