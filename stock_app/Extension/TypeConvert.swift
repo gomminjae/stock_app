@@ -23,8 +23,9 @@ extension String {
 extension Date {
     
     func toString() -> String {
-        let dataFormatter = DateFormatter()
-        return dataFormatter.string(from: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
     }
 }
 

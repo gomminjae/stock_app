@@ -8,6 +8,7 @@ target 'stock_app' do
   pod 'SnapKit'
   pod 'STTabbar'
   pod 'TextFieldEffects'
+  pod 'Kanna', '~> 5.2.2'
   # Pods for stock_app
 
   target 'stock_appTests' do

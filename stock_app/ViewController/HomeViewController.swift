@@ -15,16 +15,21 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let category = ["기술","바이오", "엔터테이먼트", "금융", "운송", "원자재", "에너지", "화학"]
+    
+    private var realm = RealmManager.shared.realm
+    private var notificationToken: NotificationToken?
+    
+    //stock elements
+    //private var portfolios: Results<Stock>!
+    
+    //stock list
+    private var folders: Results<StockList>!
     
     
-    var realm = RealmManager.shared.realm
-    var notificationToken: NotificationToken?
-    var portfolios: Results<Stock>!
-    var news = [News]()
-    var setCategory: Category?
+    private var news = [News]()
+    private var setCategory: Category?
     
-    var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
+    private var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
     
     
     
@@ -40,14 +45,13 @@ class HomeViewController: UIViewController {
         setupCollectionView()
         setupCollectionViewLayout()
         
-        
         //load data
-        portfolios = realm.objects(Stock.self)
-        tableView.reloadData()
+        //portfolios = realm.objects(Stock.self)
+        folders = realm.objects(StockList.self).sorted(byKeyPath: "saveDate", ascending: false)
+    
         
         //push driven
-        notificationToken = realm.observe { (noti, realm) in
-            self.tableView.reloadData()
+        notificationToken = realm.observe { (noti, realm) in            self.collectionView.reloadData()
         }
         
     }
@@ -55,29 +59,30 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        collectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showPortfolio" {
-        guard let vc = segue.destination as? PortfolioViewController else { return }
-            if let index = sender as? Int {
-                vc.category = Category(rawValue: category[index])
+            guard let vc = segue.destination as? PortfolioViewController else { return }
+            if let data = sender as? StockList {
+                vc.selectedFolder = data 
             }
         }
-        
+            
         else if segue.identifier == "newsDetail" {
             guard let vc = segue.destination as? NewsLinkViewController else { return }
             if let index = sender as? Int {
                 vc.detailURL = news[index].link
             }
-
+            
         }
     }
     
     private func setupCollectionView() {
-        let nibName = UINib(nibName: CategoryCell.reusableIdentifier, bundle: nil)
-        collectionView.register(nibName, forCellWithReuseIdentifier: CategoryCell.reusableIdentifier)
+        let nibName = UINib(nibName: FolderCell.reusableIdentifier, bundle: nil)
+        collectionView.register(nibName, forCellWithReuseIdentifier: FolderCell.reusableIdentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -111,8 +116,7 @@ class HomeViewController: UIViewController {
     
     
     private func fetchNews() {
-        APIManager.getSearchResults("주식", display: 10) { (news) in
-            //비동기
+        APIManager.getSearchResults("코스피", display: 10) { (news) in
             DispatchQueue.main.async {
                 self.news = news
                 self.tableView.reloadData()
@@ -120,25 +124,31 @@ class HomeViewController: UIViewController {
         }
     }
     
+    
 }
 extension HomeViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Category.allCases.count
+        return folders.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reusableIdentifier, for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FolderCell.reusableIdentifier, for: indexPath) as? FolderCell else { return UICollectionViewCell() }
         
-        cell.categoryLabel.text = category[indexPath.item]
-        cell.itemsLabel.text = "\(portfolios.filter { $0.category == self.category[indexPath.item]}.count)"
+        cell.categoryLabel.text = folders[indexPath.item].title
+        cell.numOfItem.text = "\(folders[indexPath.item].stocks.count) items"
+        cell.layer.cornerRadius = 35
         
         return cell
     }
+    
+    
     
 }
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showPortfolio", sender: indexPath.item)
+        performSegue(withIdentifier: "showPortfolio", sender: folders[indexPath.item])
     }
 }
 
@@ -157,17 +167,19 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController: UITableViewDataSource {
     
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return news.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: IssueCell.reusableIdentifier, for: indexPath) as? IssueCell else { return UITableViewCell() }
-        cell.titleLabel.text = news[indexPath.row].title.withoutHtml
+        cell.titleLabel.text = news[indexPath.section].title.withoutHtml
         cell.selectionStyle = .none
-        cell.backgroundColor = .red
+        //cell.backgroundColor = .red
         //cell.descriptionLabel.text = news[indexPath.row].content
         //cell.animate()
         return cell
@@ -178,20 +190,22 @@ extension HomeViewController: UITableViewDataSource {
 
 extension HomeViewController: UITableViewDelegate {
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("-->\(news[indexPath.row].title.withoutHtml)")
         selectedIndex = indexPath
         tableView.reloadRows(at: [selectedIndex], with: .none)
-        //performSegue(withIdentifier: "newsDetail", sender: indexPath.row)
+        performSegue(withIdentifier: "newsDetail", sender: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if selectedIndex == indexPath { return 150 }
-        
         return 50
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
     
     
     

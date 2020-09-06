@@ -20,11 +20,14 @@ class AddPortfolioViewController: UIViewController {
     @IBOutlet weak var sellLabel: HoshiTextField!
     @IBOutlet weak var amountLabel: HoshiTextField!
     
-    let sections = ["기술","바이오", "엔터테이먼트", "금융", "운송", "원자재", "에너지", "화학"]
     
+    //카테고리 선택
+    var selectedIndex = Int()
     
     var realm = RealmManager.shared.realm
     var notificationToken: NotificationToken?
+    var stocks: Results<Stock>!
+    var folders: Results<StockList>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,7 @@ class AddPortfolioViewController: UIViewController {
         setupCategoryPickerView()
         navigationController?.navigationBar.tintColor = .white
         
-        
+        folders = realm.objects(StockList.self)
         // Do any additional setup after loading the view.
     }
     
@@ -73,12 +76,19 @@ class AddPortfolioViewController: UIViewController {
     @IBAction func setupButton(_ sender: Any) {
         let data = Stock()
         data.stockName = stockNameLabel.text ?? ""
-        data.category = categoryLabel.text ?? ""
         data.buy = buyLabel.toInt()
         data.sell = sellLabel.toInt()
         data.amount = amountLabel.toInt()
-        data.date = dateLabel.toDate()
-        RealmManager.shared.creat(data)
+        data.saveDate = dateLabel.toDate()
+        data.category = categoryLabel.text ?? ""
+        
+        do {
+            try realm.write {
+                self.folders[selectedIndex].stocks.append(data)
+            }
+        }catch {
+            print("\(error)")
+        }
         
         dismiss(animated: true, completion: nil)
     }
@@ -96,11 +106,11 @@ extension AddPortfolioViewController: UIPickerViewDataSource {
        }
        
        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-           return Category.allCases.count
+        return folders.count
        }
        
        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-           return sections[row]
+        return folders[row].title
        }
 }
 
@@ -108,6 +118,7 @@ extension AddPortfolioViewController: UIPickerViewDataSource {
 //MARK: PickerView Delegate
 extension AddPortfolioViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        categoryLabel.text = sections[row]
+        categoryLabel.text = folders[row].title
+        selectedIndex = row
     }
 }

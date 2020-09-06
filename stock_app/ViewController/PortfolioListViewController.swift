@@ -7,35 +7,50 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PortfolioListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     
+    var folders: Results<StockList>!
+    var stocks: Results<Stock>!
+    var realm = RealmManager.shared.realm
+    var notificationToken: NotificationToken?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         setupCollectionView()
         collectionViewLayout()
+        
+        folders = realm.objects(StockList.self)
+        
+        //stocks = realm.objects(Stock.self)
 
         // Do any additional setup after loading the view.
+        
+        notificationToken = realm.observe { noti, realm in
+            self.collectionView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     
     // Send data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "test" {
+        if segue.identifier == "showPortfolio" {
             guard let vc = segue.destination as? PortfolioViewController else { return }
-            
-            if let index = sender as? Int {
-                
+            if let data = sender as? StockList {
+                vc.selectedFolder = data
             }
         }
     }
-    
-    
     
     private func setNavigationBar() {
         let bar = self.navigationController?.navigationBar
@@ -72,14 +87,15 @@ class PortfolioListViewController: UIViewController {
 
 extension PortfolioListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Category.allCases.count
+        return folders.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FolderCell.reusableIdentifier, for: indexPath) as? FolderCell else { return UICollectionViewCell() }
         
-//        cell.folderNameLabel.text = "Test"
-//        cell.numOfItem.text = "100 items"
+        cell.categoryLabel.text = folders[indexPath.item].title
+        cell.numOfItem.text = "\(folders[indexPath.item].stocks.count)"
+        cell.layer.cornerRadius = 30
         
         return cell
     }
@@ -87,7 +103,7 @@ extension PortfolioListViewController: UICollectionViewDataSource {
 
 extension PortfolioListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //performSegue(withIdentifier: "test", sender: indexPath.item)
+        performSegue(withIdentifier: "showPortfolio", sender: folders[indexPath.item])
     }
 }
 

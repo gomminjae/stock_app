@@ -10,12 +10,14 @@ import UIKit
 import RealmSwift
 
 class PortfolioViewController: UIViewController {
-    @IBOutlet weak var categoryLabel: UILabel!
     
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var category: Category?
-    var detailStock: Stock?
+    //passed data
+    var selectedFolder = StockList()
+    
+    
     var portfolios: Results<Stock>!
     var realm = RealmManager.shared.realm
     var notificationToken: NotificationToken?
@@ -29,7 +31,7 @@ class PortfolioViewController: UIViewController {
         setNavigationBar()
         setupTableView()
         
-        portfolios = realm.objects(Stock.self)
+        portfolios = selectedFolder.stocks.sorted(byKeyPath: "saveDate", ascending: false)
         
         tableView.reloadData()
         
@@ -37,8 +39,7 @@ class PortfolioViewController: UIViewController {
             self.tableView.reloadData()
         }
         
-        
-        categoryLabel.text = category?.rawValue
+        categoryLabel.text = selectedFolder.title
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,39 +64,35 @@ class PortfolioViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showStock" {
             guard let vc = segue.destination as? DetailViewController else { return }
-            if let index = sender as? Int {
-                vc.stock = portfolios[index]
+            if let data = sender as? Stock {
+                vc.stock = data
+                vc.category = selectedFolder.title
             }
         }
     }
-    
-    
-    
-    
-    
+
 }
 
 
 extension PortfolioViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return portfolios.count
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        portfolios.filter { $0.setCategory == self.category }.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.reusableIdentifier, for: indexPath) as? StockCell else { return UITableViewCell() }
-        if portfolios.filter({ $0.setCategory == self.category }).count == 0 {
-            tableView.setEmptyView(title: "No data", message: "Please add ", image: .checkmark)
-            return cell
-        }else {
-            
-            let data = portfolios.filter { $0.setCategory == self.category }[indexPath.row]
-            
-            cell.titleLabel.text = data.stockName
-            cell.dateLabel.text = data.date.toString()
-            
-            return cell
-        }
+        let data = portfolios[indexPath.section]
+        
+        cell.titleLabel.text = data.stockName
+        cell.dateLabel.text = data.saveDate.toString()
+
+        return cell
     }
 }
 
@@ -103,10 +100,18 @@ extension PortfolioViewController: UITableViewDataSource {
 extension PortfolioViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: "showStock", sender: indexPath.row)
-        
+
+        performSegue(withIdentifier: "showStock", sender: portfolios[indexPath.section])
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+
     
 }

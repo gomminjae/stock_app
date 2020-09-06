@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -9,27 +9,55 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="NewsCell" customModule="stock_app" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="KGk-i7-Jjw" customClass="NewsCell" customModule="stock_app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vw6-RH-0an">
-                        <rect key="frame" x="16" y="8" width="279" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vw6-RH-0an">
+                        <rect key="frame" x="6" y="0.0" width="276" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDN-RX-7oK">
+                        <rect key="frame" x="6" y="43" width="121" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rSF-7R-olH">
+                        <rect key="frame" x="294.5" y="12.5" width="14.5" height="31"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="uDN-RX-7oK" secondAttribute="trailing" constant="193" id="1dO-Qe-hND"/>
+                    <constraint firstItem="vw6-RH-0an" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="21H-JV-WW7"/>
+                    <constraint firstAttribute="bottom" secondItem="rSF-7R-olH" secondAttribute="bottom" constant="16.5" id="CZx-Q6-yM4"/>
+                    <constraint firstAttribute="trailing" secondItem="vw6-RH-0an" secondAttribute="trailing" constant="38" id="DVW-hd-O8E"/>
+                    <constraint firstAttribute="bottom" secondItem="vw6-RH-0an" secondAttribute="bottom" constant="16" id="Nzl-bG-wKP"/>
+                    <constraint firstAttribute="trailing" secondItem="rSF-7R-olH" secondAttribute="trailing" constant="11" id="YpA-We-tMI"/>
+                    <constraint firstAttribute="bottom" secondItem="uDN-RX-7oK" secondAttribute="bottom" constant="5" id="eHk-D1-x0G"/>
+                    <constraint firstItem="uDN-RX-7oK" firstAttribute="top" secondItem="vw6-RH-0an" secondAttribute="bottom" constant="-1" id="gcH-h2-jAL"/>
+                    <constraint firstItem="rSF-7R-olH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="sXa-iJ-q8R"/>
+                    <constraint firstItem="vw6-RH-0an" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="tYh-5X-wH4"/>
+                    <constraint firstItem="uDN-RX-7oK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="x8V-ZT-d2t"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="dateLabel" destination="uDN-RX-7oK" id="Y3X-BT-Uhc"/>
                 <outlet property="titleLabel" destination="vw6-RH-0an" id="DWB-jr-3Tw"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="100.44642857142857"/>
+            <point key="canvasLocation" x="-188.40579710144928" y="3.3482142857142856"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+    </resources>
 </document>

@@ -10,6 +10,8 @@ import UIKit
 
 class FolderCell: UICollectionViewCell {
 
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var numOfItem: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
