@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C1C2A634-D73F-4DC0-9539-95E34C74A1F7"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E14F8EB7-F44F-4F82-9C17-76E456B608E1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "stock_app/View/AssetView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B65F3E1B-E757-4D17-AEB2-4199B3C7937A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "stock_app/ViewController/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "B65F3E1B-E757-4D17-AEB2-4199B3C7937A - 63a0e551d91f6540"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_app.HomeViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; stock_app.HomeViewController"
+                  moduleName = "stock_app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwonminjae/Desktop/stock_app/stock_app/ViewController/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "941">
+               </Location>
+               <Location
+                  uuid = "B65F3E1B-E757-4D17-AEB2-4199B3C7937A - 505abb29947e105b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_app.HomeViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;stock_app.HomeViewController&gt;"
+                  moduleName = "stock_app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwonminjae/Desktop/stock_app/stock_app/ViewController/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "882">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "24F58910-C5C5-4BCC-9752-546E9694A3E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "stock_app/ViewController/PopUpViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "popupView"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "24F58910-C5C5-4BCC-9752-546E9694A3E4 - bc7c401930868e3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_app.PopUpViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; stock_app.PopUpViewController"
+                  moduleName = "stock_app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwonminjae/Desktop/stock_app/stock_app/ViewController/PopUpViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "246">
+               </Location>
+               <Location
+                  uuid = "24F58910-C5C5-4BCC-9752-546E9694A3E4 - be767f484befc981"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "stock_app.PopUpViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;stock_app.PopUpViewController&gt;"
+                  moduleName = "stock_app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gwonminjae/Desktop/stock_app/stock_app/ViewController/PopUpViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "199">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

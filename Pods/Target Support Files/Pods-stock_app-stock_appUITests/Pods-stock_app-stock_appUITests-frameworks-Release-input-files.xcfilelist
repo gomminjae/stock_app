@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/Pods-stock_app-stock_appUITests/Pods-stock_app-stock_appUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
+${BUILT_PRODUCTS_DIR}/STTabbar/STTabbar.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework
