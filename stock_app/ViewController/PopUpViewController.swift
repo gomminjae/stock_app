@@ -87,7 +87,7 @@ class PopUpViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .clear//UIColor.white.withAlphaComponent(0.8)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         view.addSubview(popupView)
         popupView.addSubview(dismissButton)
         popupView.addSubview(popupLabel)

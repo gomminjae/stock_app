@@ -52,6 +52,9 @@ class PortfolioListViewController: UIViewController {
         }
     }
     
+    
+    
+    
     private func setNavigationBar() {
         let bar = self.navigationController?.navigationBar
         bar?.setBackgroundImage(UIImage(), for: .default)
@@ -74,15 +77,19 @@ class PortfolioListViewController: UIViewController {
         layout.minimumInteritemSpacing = spacing
         self.collectionView?.collectionViewLayout = layout
     }
-    
-    
-    
+   
     @IBAction func addFolderTapped(_ sender: Any) {
         print("add Tapped")
         let vc = PopUpViewController()
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true)
     }
+    
+    @IBAction func deleteFolderTapped(_ sender: Any) {
+        
+    }
+    
+    
 }
 
 extension PortfolioListViewController: UICollectionViewDataSource {
@@ -115,5 +122,28 @@ extension PortfolioListViewController: UICollectionViewDelegateFlowLayout {
         let totalSpacing = (2 * 16) + ((numberOfItem - 1) * spacing)
         let cellSize = (Int((collectionView.bounds.width)) - totalSpacing) / numberOfItem
         return CGSize(width: cellSize, height: cellSize)
+    }
+}
+
+
+
+extension PortfolioListViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return folders.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return folders[row].title
+    }
+}
+
+extension PortfolioListViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
     }
 }

@@ -124,6 +124,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func addFolderTapped(_ sender: Any) {
+        print("add Tapped")
+        let vc = PopUpViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true)
+    }
+    
     
 }
 extension HomeViewController: UICollectionViewDataSource {

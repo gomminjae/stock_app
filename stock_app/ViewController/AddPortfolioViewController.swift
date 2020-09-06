@@ -51,6 +51,7 @@ class AddPortfolioViewController: UIViewController {
     func setupCategoryPickerView() {
         let pickerView = UIPickerView()
         pickerView.delegate = self
+        pickerView.dataSource = self
         categoryLabel.inputView = pickerView
         let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 44.0))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

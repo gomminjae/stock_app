@@ -73,12 +73,20 @@
                         <viewLayoutGuide key="safeArea" id="VEY-Uw-kcc"/>
                     </view>
                     <navigationItem key="navigationItem" id="gkN-VA-b3y">
-                        <barButtonItem key="rightBarButtonItem" image="folder.badge.plus" catalog="system" id="58t-ja-esX">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="addFolderTapped:" destination="iRd-N4-q3r" id="ZeL-Mx-9XB"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="trash.fill" catalog="system" id="QWo-vE-8BX">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="deleteFolderTapped:" destination="iRd-N4-q3r" id="T12-br-nnY"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="folder.fill.badge.plus" catalog="system" id="58t-ja-esX">
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="addFolderTapped:" destination="iRd-N4-q3r" id="ZeL-Mx-9XB"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="DNZ-GT-K4C" id="yID-xM-sE5"/>
@@ -230,7 +238,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1M9-Ip-hsJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Grx-J8-x29"/>
+                    <navigationItem key="navigationItem" id="Grx-J8-x29">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="folder.fill.badge.plus" catalog="system" id="X21-6i-7yc">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addFolderTapped:" destination="2Ef-OM-Qr0" id="5Bb-Q9-PuY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="X3j-y9-dkz" id="BSx-gx-BmW"/>
                         <outlet property="tableView" destination="reH-Cn-LZF" id="Zbd-cP-XqF"/>
@@ -249,7 +264,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-v3-1yy">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="213"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categoryt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRm-Uq-RZe">
                                         <rect key="frame" x="20" y="96" width="170" height="48"/>
@@ -266,7 +281,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U72-YB-PrC">
-                                <rect key="frame" x="0.0" y="231" width="414" height="631"/>
+                                <rect key="frame" x="0.0" y="182" width="414" height="631"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="631" id="UWP-qa-xgs"/>
@@ -317,7 +332,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n22-Xo-6Q1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1678"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="1629"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CU3-nT-mlc">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1802"/>
@@ -840,16 +855,17 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ulU-7W-h39"/>
-        <segue reference="Hln-iM-l5X"/>
-        <segue reference="cIn-Ft-e3C"/>
+        <segue reference="Y2F-Eb-e6g"/>
+        <segue reference="DFG-dC-DhB"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="folder.badge.plus" catalog="system" width="128" height="86"/>
         <image name="folder.fill" catalog="system" width="128" height="95"/>
+        <image name="folder.fill.badge.plus" catalog="system" width="128" height="86"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.rectangle.fill" catalog="system" width="128" height="93"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
         <image name="wrench.fill" catalog="system" width="128" height="120"/>
         <image name="x.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
