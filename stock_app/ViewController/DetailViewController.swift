@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 
 
@@ -23,15 +24,19 @@ class DetailViewController: UIViewController {
     var stock = Stock()
     var news = [News]()
     var category: String?
+    var realm = RealmManager.shared.realm
+    var stockInfo = [String]()
     
-    let stringArray = ["2500에 매수 신경 요망 매수지점 찾고 새로운 것", "태풍주 관련 내용임 ", "third row","2500에 매수 신경 요망 매수지점 찾고 새로운 것","2500에 매수 신경 요망 매수지점 찾고 새로운 것","2500에 매수 신경 요망 매수지점 찾고 새로운 것","2500에 매수 신경 요망 매수지점 찾고 새로운 것","2500에 매수 신경 요망 매수지점 찾고 새로운 것","2500에 매수 신경 요망 매수지점 찾고 새로운 것","2500에 매수 신경 요망 매수지점 찾고 새로운 것", "태풍주 관련 내용임 ","2500에 매수 신경 요망 매수지점 찾고 새로운 것", "태풍주 관련 내용임 ","2500에 매수 신경 요망 매수지점 찾고 새로운 것", "태풍주 관련 내용임 "]
-
+    var data: Results<Stock>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(stock)")
         stockNameLabel.text = stock.stockName
         categoryLabel.text = category
         
+        data = realm.objects(Stock.self).filter("stockName = '\(self.stock.stockName)'")//.map({ $0.info })
+        print(data)
         
         setNavigationBar()
         setupTableView()
@@ -39,8 +44,11 @@ class DetailViewController: UIViewController {
         fetchNews()
         logTextView.isEditable = false
         
-        logTextView.attributedText = BulletString.createBulletedList(fromStringArray: stringArray, font: UIFont.systemFont(ofSize: 20))
+        logTextView.attributedText = BulletString.createBulletedList(fromStringArray: stockInfo, font: UIFont.systemFont(ofSize: 20))
         logTextView.backgroundColor = .white
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
@@ -68,9 +76,32 @@ class DetailViewController: UIViewController {
         }
     }
     
-   
-    
-
+    @IBAction func addInfoTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Stock Info", message: "정보를 추가하세요!", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "please enter"
+        }
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            let textField = alert.textFields![0]
+            let saveDate = Date()
+            self.stockInfo.append(textField.text!)
+                do {
+                    try self.realm.write {
+                        self.stock.info.append(textField.text! + "   \(saveDate.toString())")
+                    }
+                }catch {
+                    print("\(error)")
+                }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true)
+    }
   
 }
 

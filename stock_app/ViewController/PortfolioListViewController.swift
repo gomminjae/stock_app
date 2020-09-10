@@ -9,15 +9,52 @@
 import UIKit
 import RealmSwift
 
+
+enum Mode {
+    case view
+    case select
+}
+
 class PortfolioListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    @IBOutlet weak var addFolderButton: UIBarButtonItem!
+    @IBOutlet weak var deleteCancelButton: UIBarButtonItem!
     
     
     var folders: Results<StockList>!
     var stocks: Results<Stock>!
     var realm = RealmManager.shared.realm
     var notificationToken: NotificationToken?
+    
+    var viewMode: Mode = .view {
+        didSet {
+            switch viewMode {
+            case .view:
+                deleteCancelButton.title = ""
+                deleteButton.title = nil
+                deleteButton.image = UIImage(named: "trash.fill")
+                deleteButton.tintColor = .white
+                addFolderButton.image = UIImage(named: "older.fill.badge.plus")
+                addFolderButton.tintColor = .white
+                collectionView.allowsMultipleSelection = false
+            case .select:
+                addFolderButton.image = nil
+                deleteButton.title = "Delete"
+                deleteButton.image = nil
+                deleteCancelButton.title = "Cancel"
+                deleteCancelButton.tintColor = .white
+                collectionView.allowsMultipleSelection = true
+            }
+        }
+    }
+    
+    var selectedIndexPath: [IndexPath: Bool] = [:]
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +124,18 @@ class PortfolioListViewController: UIViewController {
     
     @IBAction func deleteFolderTapped(_ sender: Any) {
         
+        if viewMode == .select {
+            print("select")
+        } else { print("view")}
+        viewMode = viewMode == .view ? .select : .view
+        
+        
     }
+    
+    @IBAction func deleteCancelTapped(_ sender: Any) {
+        viewMode = viewMode == .select ? .view : .select
+    }
+    
     
     
 }
@@ -110,8 +158,24 @@ extension PortfolioListViewController: UICollectionViewDataSource {
 
 extension PortfolioListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showPortfolio", sender: folders[indexPath.item])
+       
+        switch viewMode {
+        case .view:
+            performSegue(withIdentifier: "showPortfolio", sender: folders[indexPath.item])
+        case .select:
+            selectedIndexPath[indexPath] = true
+        }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if viewMode == .select {
+            selectedIndexPath[indexPath] = false
+        }
+    }
+
+    
+    
+    
 }
 
 extension PortfolioListViewController: UICollectionViewDelegateFlowLayout {
@@ -140,6 +204,9 @@ extension PortfolioListViewController: UIPickerViewDataSource {
         return folders[row].title
     }
 }
+
+
+
 
 extension PortfolioListViewController: UIPickerViewDelegate {
     

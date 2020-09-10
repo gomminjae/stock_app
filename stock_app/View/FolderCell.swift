@@ -12,6 +12,7 @@ class FolderCell: UICollectionViewCell {
 
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var numOfItem: UILabel!
+    @IBOutlet weak var selectionIndicator: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

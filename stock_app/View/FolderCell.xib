@@ -35,9 +35,8 @@
                         <color key="textColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mcN-we-tXa">
-                        <rect key="frame" x="138" y="10" width="25" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mcN-we-tXa">
+                        <rect key="frame" x="141" y="138" width="25" height="27"/>
                     </imageView>
                 </subviews>
             </view>
@@ -46,13 +45,18 @@
                 <constraint firstItem="yG7-9I-ZVu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="85" id="2MN-R8-pW6"/>
                 <constraint firstAttribute="trailing" secondItem="yG7-9I-ZVu" secondAttribute="trailing" constant="-6" id="6Ig-Ml-rgb"/>
                 <constraint firstItem="2KN-kW-TVN" firstAttribute="top" secondItem="yG7-9I-ZVu" secondAttribute="bottom" constant="-5" id="9Xm-ef-30C"/>
+                <constraint firstItem="mcN-we-tXa" firstAttribute="top" secondItem="yG7-9I-ZVu" secondAttribute="bottom" constant="8" id="FqC-D1-I3g"/>
+                <constraint firstAttribute="trailing" secondItem="mcN-we-tXa" secondAttribute="trailing" constant="11" id="VlS-2v-oa0"/>
+                <constraint firstAttribute="bottom" secondItem="mcN-we-tXa" secondAttribute="bottom" constant="9" id="gEq-fM-KFE"/>
                 <constraint firstItem="yG7-9I-ZVu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="13" id="mEI-h0-JMB"/>
+                <constraint firstItem="mcN-we-tXa" firstAttribute="leading" secondItem="2KN-kW-TVN" secondAttribute="trailing" constant="52" id="pEn-W8-pKz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="177" height="174"/>
             <connections>
                 <outlet property="categoryLabel" destination="yG7-9I-ZVu" id="LQ5-YX-GbL"/>
                 <outlet property="numOfItem" destination="2KN-kW-TVN" id="F5h-jy-kwr"/>
+                <outlet property="selectionIndicator" destination="mcN-we-tXa" id="SPe-1E-Y44"/>
             </connections>
             <point key="canvasLocation" x="-176.08695652173915" y="92.410714285714278"/>
         </collectionViewCell>

@@ -37,6 +37,7 @@ class StockList: Object {
     dynamic var saveDate = Date()
     dynamic var category: String = ""
     
+    //주식 종목 저장
     let info = List<String>()
     
     let list = LinkingObjects(fromType: StockList.self, property: "stocks")

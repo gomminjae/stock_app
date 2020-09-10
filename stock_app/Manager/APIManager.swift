@@ -14,7 +14,6 @@ class APIManager {
     
     static func getSearchResults(_ term: String, display: Int, completion: @escaping ([News]) -> Void) {
         
-        //guard let url: URL = URL(string: "https://openapi.naver.com/v1/search/news.json?/query=\(term)") else { return }
         let requestURL =  "https://openapi.naver.com/v1/search/news.json?query=\(term)&sort=\("sim")&display=\(display)"
         let encoding = requestURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
@@ -49,8 +48,6 @@ class APIManager {
         
         dataTask.resume()
     }
-    
-    
     
     static func parseNews(_ data: Data) -> [News] {
         let decoder = JSONDecoder()
