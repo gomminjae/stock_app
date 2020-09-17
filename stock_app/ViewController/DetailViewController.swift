@@ -10,11 +10,11 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-
-
+protocol PassStockDelegate: class {
+    func sendStock(_ stock: Stock)
+}
 
 class DetailViewController: UIViewController {
-    
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var logTextView: UITextView!
@@ -25,7 +25,6 @@ class DetailViewController: UIViewController {
     var news = [News]()
     var category: String?
     var realm = RealmManager.shared.realm
-    var stockInfo = [String]()
     
     var data: Results<Stock>!
     
@@ -35,8 +34,7 @@ class DetailViewController: UIViewController {
         stockNameLabel.text = stock.stockName
         categoryLabel.text = category
         
-        data = realm.objects(Stock.self).filter("stockName = '\(self.stock.stockName)'")//.map({ $0.info })
-        print(data)
+        data = realm.objects(Stock.self).filter("stockName = '\(self.stock.stockName)'")
         
         setNavigationBar()
         setupTableView()
@@ -44,12 +42,15 @@ class DetailViewController: UIViewController {
         fetchNews()
         logTextView.isEditable = false
         
-        logTextView.attributedText = BulletString.createBulletedList(fromStringArray: stockInfo, font: UIFont.systemFont(ofSize: 20))
+        logTextView.attributedText = BulletString.createBulletedList(fromStringArray: Array(stock.info), font: UIFont.systemFont(ofSize: 20))
         logTextView.backgroundColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print("viewwillappear")
+        data = realm.objects(Stock.self).filter("stockName = '\(self.stock.stockName)'")
+        logTextView.attributedText = BulletString.createBulletedList(fromStringArray: Array(stock.info), font: UIFont.systemFont(ofSize: 20))
+        logTextView.backgroundColor = .white
     }
     
     private func setNavigationBar() {
@@ -77,30 +78,11 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func addInfoTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Stock Info", message: "정보를 추가하세요!", preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.placeholder = "please enter"
-        }
-        
-        let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            let textField = alert.textFields![0]
-            let saveDate = Date()
-            self.stockInfo.append(textField.text!)
-                do {
-                    try self.realm.write {
-                        self.stock.info.append(textField.text! + "   \(saveDate.toString())")
-                    }
-                }catch {
-                    print("\(error)")
-                }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true)
+        let vc = PopUpViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.popupType = .info
+        vc.stock = self.stock
+        present(vc, animated: true)
     }
   
 }

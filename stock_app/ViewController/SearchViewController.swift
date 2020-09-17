@@ -44,7 +44,6 @@ class SearchViewController: UIViewController {
         if segue.identifier == "newsDetail" {
             guard let vc = segue.destination as? NewsLinkViewController else { return }
             if let index = sender as? Int {
-                
                 vc.detailURL = news[index].link
             }
         }

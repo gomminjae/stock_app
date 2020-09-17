@@ -30,27 +30,7 @@ class PortfolioListViewController: UIViewController {
     var realm = RealmManager.shared.realm
     var notificationToken: NotificationToken?
     
-    var viewMode: Mode = .view {
-        didSet {
-            switch viewMode {
-            case .view:
-                deleteCancelButton.title = ""
-                deleteButton.title = nil
-                deleteButton.image = UIImage(named: "trash.fill")
-                deleteButton.tintColor = .white
-                addFolderButton.image = UIImage(named: "older.fill.badge.plus")
-                addFolderButton.tintColor = .white
-                collectionView.allowsMultipleSelection = false
-            case .select:
-                addFolderButton.image = nil
-                deleteButton.title = "Delete"
-                deleteButton.image = nil
-                deleteCancelButton.title = "Cancel"
-                deleteCancelButton.tintColor = .white
-                collectionView.allowsMultipleSelection = true
-            }
-        }
-    }
+    var viewMode: Mode = .view
     
     var selectedIndexPath: [IndexPath: Bool] = [:]
     
@@ -118,6 +98,7 @@ class PortfolioListViewController: UIViewController {
     @IBAction func addFolderTapped(_ sender: Any) {
         print("add Tapped")
         let vc = PopUpViewController()
+        vc.popupType = .folder
         vc.modalPresentationStyle = .overCurrentContext
         present(vc, animated: true)
     }
