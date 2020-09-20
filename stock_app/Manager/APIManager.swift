@@ -23,8 +23,8 @@ class APIManager {
         var request = URLRequest(url: xurl)
         request.httpMethod = "GET"
         //HTTP header
-        request.addValue("tRbXfUU54efrzbzzL_qR", forHTTPHeaderField: "X-Naver-Client-Id")
-        request.addValue("qX3ZuDiOob", forHTTPHeaderField: "X-Naver-Client-Secret")
+        request.addValue("", forHTTPHeaderField: "X-Naver-Client-Id")
+        request.addValue("", forHTTPHeaderField: "X-Naver-Client-Secret")
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
 
