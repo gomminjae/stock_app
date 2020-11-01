@@ -29,4 +29,11 @@
 
 
 ## Issue 
+- **realm을 사용하면서 하나의 model객체를 저장하는것만 가능하였으나 array형식으로 넣어야하는 상황이 발생함 (한 폴더에 여러개의 데이터를 넣어야함)**
+헤결: **Realm공식문서를 참고** 1대 다의 관계부분을 보고 List속성을 이용햇 해결함 
+- **주식 content를 넣을때 textView에서 각 문장을 구별해야하는 문젝 생김**
+해결: (Stackoverflow검색)NSAttributeString을 이용하여 한 문장당 맨앞에 불릿이 만들어지게 구현함
+- **naver new 제목을 불러올때 html태그도 함께 나타나는 문제가 발생함**
+해결: (Stackoverflow검색)NSAttributeString.DocumentReadingOptionKey를 이용 - documentType, characterEncoding 속성 사용 
+
 
